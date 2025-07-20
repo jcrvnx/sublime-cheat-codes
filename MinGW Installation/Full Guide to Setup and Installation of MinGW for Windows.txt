@@ -1,0 +1,61 @@
+Full Guide to Setup and Installation of MinGW for Windows
+By Jcrist Vincent Orhen
+
+Step-by-Step Installation
+
+1. Download the Installer
+Download the latest MSYS2 installer from the [MSYS2 GitHub Releases](https://github.com/msys2/msys2-installer/releases) or directly via this link:
+
+👉 [msys2-x86_64-20241208.exe](https://github.com/msys2/msys2-installer/releases/download/2024-12-08/msys2-x86_64-20241208.exe)
+
+2. Run the Installer
+- Launch the downloaded `.exe` file.
+- Follow the installation wizard.
+- System Requirements: 64-bit Windows 8.1 or newer.
+- When prompted to set up the Start Menu Shortcuts, accept the defaults.
+- Ensure "Run MSYS2 now" is checked before clicking **Finish**.
+
+In the MSYS2 terminal that opens, run the following command:
+```bash
+pacman -S --needed base-devel mingw-w64-ucrt-x86_64-toolchain
+```
+- Press `Enter` to accept the default toolchain group packages.
+- Type `Y` when asked to proceed with installation.
+
+4. Add MinGW to Windows PATH
+To ensure you can use the compiler from any terminal:
+
+1. Open Settings from the Windows search bar.
+2. Search for "Edit environment variables for your account".
+3. Under User variables, select the `Path` variable and click Edit.
+4. Click New, then add:
+    ```
+    C:\msys64\ucrt64\bin
+    ```
+5. Click OK to close both dialog windows.
+
+> 📝 Reopen any Command Prompt or terminal windows to apply the updated PATH.
+
+Verifying the Installation
+
+Open a new Command Prompt and run:
+```bash
+gcc --version
+g++ --version
+gdb --version
+```
+
+You should see version outputs for each tool.
+
+Troubleshooting
+
+- ✅ Nothing appears when running `gcc` or `g++`: Ensure the PATH is set correctly.
+- ❌ Missing GDB? Run the following in the MSYS2 terminal:
+    ```bash
+    pacman -S mingw-w64-ucrt-x86_64-gdb
+    ```
+- ❌ "The value of miDebuggerPath is invalid" error: This often means GDB is not installed.
+
+> Make sure you followed all steps, particularly the correct `ucrt64` path for your MSYS2/MinGW installation.
+
+✅ MinGW is now installed and ready to use for compiling C/C++ projects on Windows!

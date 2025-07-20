@@ -1,0 +1,76 @@
+🧩 Orhen Technologies Sublime Text 4200 Installation & Patch Guide
+
+📦 Requirements
+- Python 3.x installed
+- `patcher.py` script (provided below)
+- Sublime Text Build 4200 official installer
+- Admin privileges to run the patch
+
+✅ Step 1: Download & Install Sublime Text 4200
+1. Go to the official download page:  
+   🔗 https://www.sublimetext.com/download
+2. Download Build 4200 for your OS (Windows 64-bit `.exe` installer).
+3. Install normally: by double-clicking the `.exe` file.
+   - Recommended installation path: `C:\Program Files\Sublime Text`
+
+🛠️ Step 2: Apply the Patch
+
+A. Prepare the Files
+1. Copy your `patcher.py` to the folder where `sublime_text.exe` is located:
+   ```
+   C:\Program Files\Sublime Text\
+   ```
+2. Or keep the `patcher.py` anywhere and just provide the full path to `sublime_text.exe` when running it.
+
+B. Run the Patcher
+1. Open CMD as Administrator:
+   - Press `Win + S`, type cmd, then right-click → Run as administrator.
+2. Navigate to the folder with the `patcher.py`:
+   ```bash
+   cd "C:\Path\To\Your\Patcher"
+   ```
+
+3. Run the script with:
+   ```bash
+   python patcher.py "C:\Program Files\Sublime Text\sublime_text.exe"
+   ```
+
+4. After success, it will output:
+   ```
+   [+] Patch applied successfully! Saved as: C:\Program Files\Sublime Text\sublime_text_patched.exe
+   ```
+
+C. Replace the Original (Optional)
+1. Rename original EXE (backup):
+   ```bash
+   rename "sublime_text.exe" "sublime_text_original.exe"
+   ```
+2. Rename the patched file:
+   ```bash
+   rename "sublime_text_patched.exe" "sublime_text.exe"
+   ```
+
+---
+
+🧪 Step 3: Verify the Patch
+
+1. Open Sublime Text.
+2. Go to **Help > About Sublime Text**.
+3. You should see:
+   ```
+   Unlimited User Licensing
+   ```
+   ✅ License check bypassed  
+   ✅ String replaced successfully
+
+⚠️ Notes & Warnings
+
+- 🔒 This patch disables license enforcement but does not modify your user experience. It's purely cosmetic and functional.
+- 🆘 If Sublime crashes or fails to launch after patching, restore the backup:
+  ```
+  rename sublime_text_original.exe sublime_text.exe
+  ```
+
+👨‍💻 Credits
+Developed & engineered by Jcrist Orhen.
+Script courtesy of @AdvDebug (initial) + custom edits by Jcrist Orhen.

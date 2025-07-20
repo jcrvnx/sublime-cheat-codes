@@ -1,0 +1,92 @@
+# Setting Up Sublime Text for C++ Development
+
+This guide provides the step-by-step instructions to configure **Sublime Text** for compiling and running C++ programs using **g++ (MinGW)**.  
+Created and documented by **Jcrist Vincent Orhen**, Founder of **Orhen Technologies**.
+
+---
+
+## ✅ Prerequisites
+
+- **Sublime Text** installed  
+- **MinGW (with g++)** properly installed and added to system PATH  
+- Basic knowledge of C++ and file I/O redirection
+
+---
+
+## 🛠️ Step-by-Step Setup
+
+### 1. Open Sublime Text and Create a New Build System
+
+1. Click on the `Tools` menu.
+2. Hover over `Build System` and click on `New Build System`.
+3. Replace the default content with the following:
+
+```json
+{
+    "cmd": ["g++.exe", "-std=c++17", "${file}",
+            "-o", "${file_base_name}.exe",
+            "&&", "${file_base_name}.exe<inputf.in>outputf.out"],
+    "shell": true,
+    "working_dir": "$file_path",
+    "selector": "source.cpp"
+}
+```
+
+### 2. Save the Build System File
+
+Save the file as:
+
+```
+CP.sublime-build
+```
+
+Location:
+```
+C:\Users\YourName\AppData\Roaming\Sublime Text\Packages\User
+```
+
+> 🔁 Replace `YourName` with your actual Windows username.
+
+---
+
+## ⚙️ Configure the MinGW Include Files (Optional but Recommended)
+
+1. Open **File Explorer** and navigate to the following path:
+
+```
+C:\MinGW\lib\gcc\mingw32\6.3.0\include\c++\mingw32\bits
+```
+
+2. Inside that folder, press `Shift + Right Click` and choose **"Open command window here"** or search `cmd` in the address bar and hit Enter.
+
+3. In the Command Prompt, execute the following:
+
+```sh
+g++ stdc++.h -std=c++17
+```
+
+This ensures your standard C++ header (`stdc++.h`) is validated and compatible with the selected standard.
+
+---
+
+## ✅ You're All Set!
+
+You can now:
+- Write C++ code in Sublime Text
+- Use `Ctrl + B` to compile and run your code
+- Automatically redirect input from `inputf.in` and save output to `outputf.out`
+
+---
+
+## 💡 Notes
+
+- Make sure `g++.exe` is accessible globally via your system PATH.
+- Ensure your `inputf.in` file exists in the same directory as your `.cpp` file to avoid runtime errors.
+- This setup uses the `-std=c++17` flag. You can change this to another standard (e.g., `c++20`) if needed.
+
+---
+
+## 📄 Credits
+
+Documentation authored by **Jcrist Vincent Orhen**  
+Founder, **Orhen Technologies**
